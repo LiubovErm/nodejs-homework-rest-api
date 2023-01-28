@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
 const { schemas } = require("../../models/user");
@@ -11,16 +11,16 @@ router.post(
   ctrlWrapper(ctrl.register)
 );
 
+router.post("/login", validation(schemas.loginSchema), ctrlWrapper(ctrl.login));
+
+router.get("/logout", auth, ctrlWrapper(ctrl.logout));
+
+router.get("/verify/:verificationToken", ctrlWrapper(ctrl.verifyEmail));
+
 router.post(
-  "/login",
-  validation(schemas.loginSchema),
-  ctrlWrapper(ctrl.login)
+  "/verify",
+  validation(schemas.verifyEmailSchema),
+  ctrlWrapper(ctrl.resendVerifyEmail)
 );
-
-router.get(
-  "/logout",
-  auth,
-  ctrlWrapper(ctrl.logout));
-
 
 module.exports = router;
