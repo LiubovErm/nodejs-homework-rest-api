@@ -6,12 +6,10 @@ const getById = async (req, res) => {
   const contactById = await contactsOperations.getContactById(contactId);
     
   if (!contactById) {
-    throw new NotFound(`Contact with id ${contactId} not found`);
+    throw new NotFound(`Not found`);
     }
     
-  res.json({
-    status: "success",
-    code: 200,
+  res.status(200).json({
     data: {
       contactById,
     },

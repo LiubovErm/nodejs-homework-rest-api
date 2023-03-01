@@ -9,14 +9,14 @@ const { contacts: ctrl } = require("../../controllers");
 const validateMiddleware = validation(contactsSchema);
 
 
-router.get("/", ctrlWrapper(ctrl.getAll));
+router.get("/", ctrlWrapper(ctrl.listContacts));
 
 router.get("/:contactId", ctrlWrapper(ctrl.getById));
 
-router.post("/", validateMiddleware, ctrlWrapper(ctrl.add));
+router.post("/", validateMiddleware, ctrlWrapper(ctrl.addContact));
 
-router.delete("/:contactId", ctrlWrapper(ctrl.removeById));
+router.delete("/:contactId", ctrlWrapper(ctrl.removeContact));
 
-router.put("/:contactId", validateMiddleware, ctrlWrapper(ctrl.updateById));
+router.put("/:contactId", validateMiddleware, ctrlWrapper(ctrl.updateContact));
 
 module.exports = router
