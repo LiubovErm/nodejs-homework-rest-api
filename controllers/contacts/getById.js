@@ -9,9 +9,9 @@ const getById = async (req, res) => {
     throw new NotFound(`Not found`);
     }
     
-  res.status(200).json({
+  res.status(200).json(
       contactById,
-  });
+  );
 };
 
 module.exports = getById;

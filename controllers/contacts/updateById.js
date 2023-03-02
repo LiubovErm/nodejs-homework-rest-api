@@ -8,9 +8,9 @@ const updateContact = async (req, res) => {
   if (!contactToUpdate) {
     throw new NotFound(`Not found`);
   }
-  res.status(200).json({
+  res.status(200).json(
       contactToUpdate,
-  });
+  );
 };
 
 module.exports = updateContact;
