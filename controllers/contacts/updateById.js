@@ -9,9 +9,7 @@ const updateContact = async (req, res) => {
     throw new NotFound(`Not found`);
   }
   res.status(200).json({
-    data: {
       contactToUpdate,
-    },
   });
 };
 
