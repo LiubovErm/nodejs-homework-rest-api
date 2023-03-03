@@ -7,16 +7,16 @@ const contactSchema = new Schema({
     name: {
         type: String,
         unique: [true, "Name must be unique"],
-        required: [true, 'Set name for contact'],
+        required: [true, 'Missing required name field'],
     },
     email: {
         type: String,
-        required: [true, 'Set email for contact'],
+        required: [true, 'Missing required email field'],
     },
     phone: {
         type: String,
         unique: [true, "Phone number must be unique"],
-        required: [true, 'Set phone number for contact'],
+        required: [true, 'Missing required phone field'],
     },
     favorite: {
         type: Boolean,
@@ -34,7 +34,7 @@ const addSchema = Joi.object({
 });
 
 const updateFavoriteSchema = Joi.object({
-    favorite: Joi.boolean().required(),
+    favorite: Joi.boolean().required().message("missing field favorite"),
 });
 
 const schemas = {

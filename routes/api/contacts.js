@@ -7,16 +7,16 @@ const { validation, ctrlWrapper, isValidId } = require("../../middlewares");
 const { contacts: ctrl } = require("../../controllers");
 
 
-router.get("/", ctrlWrapper(ctrl.getAll));
+router.get("/", ctrlWrapper(ctrl.listContacts));
 
 router.get("/:id", isValidId, ctrlWrapper(ctrl.getById));
 
-router.post("/", validation(schemas.addSchema), ctrlWrapper(ctrl.add));
+router.post("/", validation(schemas.addSchema), ctrlWrapper(ctrl.addContact));
 
-router.delete("/:id", isValidId, ctrlWrapper(ctrl.removeById));
+router.delete("/:id", isValidId, ctrlWrapper(ctrl.removeContact));
 
-router.put("/:id", isValidId, validation(schemas.addSchema), ctrlWrapper(ctrl.updateById));
+router.put("/:id", isValidId, validation(schemas.addSchema), ctrlWrapper(ctrl.updateContact));
 
-router.patch("/:id/favorite", isValidId, validation(schemas.updateFavoriteSchema), ctrlWrapper(ctrl.updateFavorite));
+router.patch("/:id/favorite", isValidId, validation(schemas.updateFavoriteSchema), ctrlWrapper(ctrl.updateStatusContact));
 
 module.exports = router;
