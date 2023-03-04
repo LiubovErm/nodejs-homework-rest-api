@@ -1,15 +1,16 @@
-const getAll = require("./getAll");
+
+const listContacts = require("./getAll");
 const getById = require("./getById");
-const add = require("./add");
-const removeById = require("./removeById");
-const updateById = require("./updateById");
-const updateFavorite = require("./updateFavorite");
+const addContact = require("./add");
+const removeContact = require("./removeById");
+const updateContact = require("./updateById");
+const updateStatusContact = require("./updateFavorite");
 
 module.exports = {
-    getAll,
+    listContacts,
     getById,
-    add,
-    removeById,
-    updateById,
-    updateFavorite,
+    addContact,
+    removeContact,
+    updateContact,
+    updateStatusContact,
 }
