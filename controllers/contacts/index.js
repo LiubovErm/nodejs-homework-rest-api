@@ -1,4 +1,3 @@
-
 const listContacts = require("./getAll");
 const getById = require("./getById");
 const addContact = require("./add");
