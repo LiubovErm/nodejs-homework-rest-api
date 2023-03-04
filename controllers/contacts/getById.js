@@ -1,16 +1,16 @@
-const contactsOperations = require("../../models/contacts");
-const { NotFound } = require("http-errors");
+const { Contact } = require("../../models/contact");
+const { HttpError } = require("../../helpers");
 
 const getById = async (req, res) => {
-  const { contactId } = req.params;
-  const contactById = await contactsOperations.getContactById(contactId);
+  const { id } = req.params;
+  const contactById = await Contact.findById(id);
     
   if (!contactById) {
-    throw new NotFound(`Not found`);
+    throw HttpError(404, "Not found");
     }
     
   res.status(200).json(
-      contactById,
+    contactById,
   );
 };
 
