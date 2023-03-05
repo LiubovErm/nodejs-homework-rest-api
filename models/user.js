@@ -34,15 +34,15 @@ const userSchema = new Schema(
 userSchema.post("save", validationError);
 
 const registerUpSchema = Joi.object({
-  name: Joi.string().required(),
-  email: Joi.string().required(),
-  password: Joi.string().min(6).required(),
+  name: Joi.string().required().messages({"any.required": "missing field name"}),
+  email: Joi.string().required().messages({"any.required": "missing field email"}),
+  password: Joi.string().min(6).required().messages({"any.required": "missing field password"}),
   subscription: Joi.string(),
 });
 
 const loginSchema = Joi.object({
-  email: Joi.string().required(),
-  password: Joi.string().min(6).required(),
+  email: Joi.string().required().messages({"any.required": "missing field email"}),
+  password: Joi.string().min(6).required().messages({"any.required": "missing field password"}),
 });
 
 const subscriptionSchema = Joi.object({
