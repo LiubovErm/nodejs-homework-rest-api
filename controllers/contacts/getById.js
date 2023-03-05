@@ -9,9 +9,13 @@ const getById = async (req, res) => {
     throw HttpError(404, "Not found");
     }
     
-  res.status(200).json(
-    contactById,
-  );
+  res.json({
+    status: "success",
+    code: 200,
+    data: {
+      contactById,
+    },
+  });
 };
 
 module.exports = getById;
