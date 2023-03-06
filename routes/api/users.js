@@ -11,13 +11,13 @@ router.post(
   ctrlWrapper(ctrl.register)
 );
 
-router.post(
+router.get(
   "/login",
   validation(schemas.loginSchema),
   ctrlWrapper(ctrl.login)
 );
 
-router.get(
+router.post(
   "/logout",
   auth,
   ctrlWrapper(ctrl.logout));
