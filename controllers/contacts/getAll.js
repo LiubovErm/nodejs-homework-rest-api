@@ -1,11 +1,30 @@
 const { Contact } = require("../../models/contact");
 
-const listContacts = async (_, res) => {
-  const contactsAll = await Contact.find({}, "-createdAt -updatedAt");
+const getAll = async (req, res) => {
+  const { _id } = req.user;
+  const { page = 1, limit = 20, favorite } = req.query;
+  const skip = (page - 1) * limit;
   
-  res.status(200).json(
-    contactsAll,
-);
+  let filter = { owner: _id };
+  if (favorite) {
+    filter = {
+      owner: _id,
+      favorite: true
+    };
+  }
+
+  const contactsAll = await Contact.find(filter, "", {
+    skip,
+    limit: Number(limit),
+  }).populate("owner", "_id name email");
+
+  res.json({
+    status: "success",
+    code: 200,
+    data: {
+      result: contactsAll,
+    },
+  });
 };
 
-module.exports = listContacts;
+module.exports = getAll;
