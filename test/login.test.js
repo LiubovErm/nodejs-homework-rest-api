@@ -31,7 +31,7 @@ describe("test login controller", () => {
         data: { user, token },
       },
     } = await request(app)
-      .post("/api/auth/login")
+      .post("/api/users/login")
       .set("Content-type", "application/json")
       .send({
         email: "test@gmail.com",
@@ -50,7 +50,7 @@ describe("test login controller", () => {
       status,
       body: { message },
     } = await request(app)
-      .post("/api/auth/login")
+      .post("/api/users/login")
       .set("Content-type", "application/json")
       .send({
         password: "123456789",
@@ -65,7 +65,7 @@ describe("test login controller", () => {
       status,
       body: { message },
     } = await request(app)
-      .post("/api/auth/login")
+      .post("/api/users/login")
       .set("Content-type", "application/json")
       .send({
         email: "test@gmail.com",
@@ -80,7 +80,7 @@ describe("test login controller", () => {
       status,
       body: { message },
     } = await request(app)
-      .post("/api/auth/login")
+      .post("/api/users/login")
       .set("Content-type", "application/json")
       .send({
         email: "test@gmail.com",
